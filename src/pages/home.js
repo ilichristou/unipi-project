@@ -1,138 +1,86 @@
-// import React from 'react';
-// import {Grid, Link, Typography} from "@material-ui/core";
-// import {gridSpacing} from "./demo-data/constant";
-// import AreaChart from "./charts/AreaChart";
-// import Doughnut from "./charts/Doughnut";
-// import Calendar from "./charts/Calendar"
-// import Paper from "@mui/material/Paper";
-// import BarChart1 from "./charts/BarChart1";
-// import MonthCalendar from "./charts/MonthCalendar"
-//
-// //container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}
-//
-//
-// const paperStyle = {padding: 30, margin: "20px auto", align: "right"}
-//
-// const home = () => {
-//     return (
-//         <div>
-//             <Grid container>
-//                 <Grid>
-//                     <MonthCalendar/>
-//                     <BarChart1/>
-//                     <Calendar/>
-//                     <AreaChart/>
-//                     <Doughnut/>
-//                 </Grid>
-//             </Grid>
-//         </div>
-//     );
-// }
-//
-//
-// export default home;
-
-import * as React from 'react';
-import {styled} from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import AreaChart from "./charts/AreaChart";
-import Doughnut from "./charts/Doughnut";
-import Calendar from "./charts/Calendar";
-import BarChart1 from "./charts/BarChart1";
-import MonthCalendar from "./charts/MonthCalendar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import card1 from "../items/card1";
+import React, {useEffect, useState} from "react";
 import NavigationBar from "../navBar/NavigationBar";
-import footer from "./footer";
+import {useHistory} from "react-router-dom";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth, db} from "../firebase";
+import Footer from './footer';
+import Featured from "./tiles/Featured";
+import {CssBaseline} from "@material-ui/core";
+import Container from "@material-ui/core/Container";
+import ImageGrid from "./image-grid/imageGrid";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import useStyles from "../styles";
+import MyCharts from "./tiles/MyCharts";
+import SecondFeatured from "./tiles/SecondFeatured";
+import ThirdFeatured1 from "./tiles/ThirdFeatured";
 
-const Item = styled(Paper)(({theme}) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
 
-const DrawerHeader = styled('div')(({theme}) => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-}));
+function Dashboard() {
+    const [user, loading, error] = useAuthState(auth);
+    const [firstName, setFirstName] = useState("");
 
-export default function RowAndColumnSpacing() {
+    const classes = useStyles();
+
+    const history = useHistory();
+
+    const fetchUserName = async () => {
+        try {
+            const query = await db
+                .collection("users")
+                .where("uid", "==", user?.uid)
+                .get();
+            const data = await query.docs[0].data();
+            firstName(data.name);
+        } catch (err) {
+            console.error(err);
+            alert("An error occured while fetching user data");
+        }
+    };
+
+    useEffect(() => {
+        if (loading) return;
+        if (!user) return history.replace("/");
+
+        fetchUserName();
+    }, [user, loading]);
+
+
     return (
-        <React.Fragment>
+        <div className="App" style={{width: '100%', align: 'center', padding: '10px'}}>
+            <CssBaseline/>
+            {/*<React.Fragment>*/}
             <NavigationBar/>
 
+            <Container maxWidth="lg">
                 <main>
-                    <card1/>
+                    <Grid container spacing={2} maxWidth="70%" justify-content="center" align-items="center">
+                        <Grid item xs={12}>
+                            <Paper className={classes.paper}>
+                                Welcome!
+                                <div>{firstName}</div>
+                                <div>{user?.email}</div>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                    <br/>
+                    <br/>
+                    <Featured/>
+                    <MyCharts/>
+                    <br/>
+                    <br/>
+                    <SecondFeatured/>
+                    <ThirdFeatured1/>
                 </main>
-            <footer/>
-        </React.Fragment>
-        // <React.Fragment>
-        //     <NavigationBar/>
-        //     <card1/>
-        // </React.Fragment>
-        // <Box component="main" sx={{flexGrow: 1, p: 3}}>
-        //
-        //     <Toolbar/>
-        //     <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-        //         <Box gridColumn="span 4">
-        //             <Item>
-        //                 <MonthCalendar/>
-        //             </Item>
-        //         </Box>
-        //         <Box gridColumn="span 6">
-        //             <Item>
-        //                 <BarChart1/>
-        //             </Item>
-        //         </Box>
-        //         <Box gridColumn="span 4">
-        //             <Item>
-        //                 <AreaChart/>
-        //             </Item>
-        //         </Box>
-        //         <Box gridColumn="span 8">
-        //             <Item>
-        //                 <Doughnut/>
-        //             </Item>
-        //         </Box>
-        //     </Box>
-        // </Box>
-        //     <Box
-        //     component="main"
-        //     sx={{flexGrow: 1, bgcolor: 'background.default', p: 3}}
-        // >
-        //     <Toolbar/>
-        //         <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-        //             <Box gridColumn="span 4">
-        //                 <Item>
-        //                     <MonthCalendar/>
-        //                 </Item>
-        //             </Box>
-        //             <Box gridColumn="span 6">
-        //                 <Item>
-        //                     <BarChart1/>
-        //                 </Item>
-        //             </Box>
-        //             <Box gridColumn="span 4">
-        //                 <Item>
-        //                     <AreaChart/>
-        //                 </Item>
-        //             </Box>
-        //             <Box gridColumn="span 8">
-        //                 <Item>
-        //                     <Doughnut/>
-        //                 </Item>
-        //             </Box>
-        //         </Box>
-        //     </Box>
+            </Container>
+            <Footer/>
+        </div>
+
+
     )
         ;
+
+
 }
+
+export default Dashboard;

@@ -4,17 +4,17 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
-    mainFeatured: {
+    mainImgFeatured3: {
         height: 300,
         backgroundColor: theme.palette.grey[800],
         color: theme.palette.common.white,
         marginBottom: theme.spacing(4),
-        backgroundImage: "url(https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1313&q=80)",
+        backgroundImage: "url(https://images.unsplash.com/photo-1416169607655-0c2b3ce2e1cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80)",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
     },
-    mainFeaturedContent: {
+    mainImgFeaturedContent3: {
         position: "relative",
         padding: theme.spacing(3),
         [theme.breakpoints.up("md")]: {
@@ -24,17 +24,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function MainFeatured() {
+export default function MainImgFeatured3() {
     const classes = useStyles();
 
     return (
-        <Grid container className={classes.mainFeatured}>
-            <Grid item md={6} className={classes.mainFeaturedContent}>
+        <Grid container className={classes.mainImgFeatured3}>
+            <Grid item md={6} className={classes.mainImgFeaturedContent3}>
                 <Typography component="h1" variant="h5" color="inherit" gutterBottom align='left'>
-                    Save water!
+                    Planting trees can be one tool to fight climate change
                 </Typography>
                 <Typography variant="body1" color="inherit" paragraph align='left'>
-                    Every drop counts. The future is in your hands.
+                    With a growing number of tree planting initiatives at regional to global scales, Karen Holl and Pedro Brancalion highlight in their latest research how planting trees is much more complicated than it seems. Here they share their findings, including guidelines to increase success of these ambitious efforts world-wide...
                 </Typography>
             </Grid>
         </Grid>

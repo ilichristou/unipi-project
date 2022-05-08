@@ -240,7 +240,7 @@ function SignUp() {
     return (
 
         <React.Fragment>
-            <NavigationBar />
+            {/*<NavigationBar />*/}
             <div className="register">
                 <div className="register__container">
                     <Typography variant="h4" gutterBottom marked="center" align="center">

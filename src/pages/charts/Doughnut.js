@@ -18,7 +18,7 @@ const data = [
     {region: 'Oceania', val: 35104756},
 ];
 
-export default class Demo extends React.PureComponent {
+export default class DemoDoughnut extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -33,8 +33,8 @@ export default class Demo extends React.PureComponent {
 
         return (
             <Grid container spacing={gridSpacing}>
-                <Grid item lg={6} xs={6} sm={6}>
-                    <Paper elevation={20} style={paperStyle}>
+                <Grid item xs={12}>
+                    <Paper elevation={2} style={paperStyle}>
                         <Chart
                             data={chartData}
                         >

@@ -10,7 +10,7 @@ import {gridSpacing} from "../demo-data/constant";
 import {Grid} from "@material-ui/core";
 
 
-const BarChart = () => {
+const BarChart1 = () => {
 
 // Sample data
     const data = [
@@ -41,4 +41,4 @@ const BarChart = () => {
     );
 }
 
-export default BarChart;
+export default BarChart1;

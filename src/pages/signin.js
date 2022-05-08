@@ -177,7 +177,7 @@ function SignIn() {
 
     return (
         <React.Fragment>
-            <NavigationBar />
+            {/*<NavigationBar />*/}
             <div className="login">
                 <div className="login__container">
                     <Typography variant="h4" gutterBottom marked="center" align="center">

@@ -8,13 +8,13 @@ import {collection} from "firebase/firestore";
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCkNhUF5yAZvbzxHKXjYSJIlLSKHZJ1Q7I",
-    authDomain: "projectacquattica.firebaseapp.com",
-    databaseURL: "https://projectacquattica-default-rtdb.firebaseio.com",
-    projectId: "projectacquattica",
-    storageBucket: "projectacquattica.appspot.com",
-    messagingSenderId: "904988126621",
-    appId: "1:904988126621:web:eae1a145fd993d2e73d374"
+    apiKey: "AIzaSyDFatx4GFtxzEGD49WHqSva2lKWDCN4IeM",
+    authDomain: "projectacquattica1.firebaseapp.com",
+    databaseURL: "https://projectacquattica1-default-rtdb.firebaseio.com",
+    projectId: "projectacquattica1",
+    storageBucket: "projectacquattica1.appspot.com",
+    messagingSenderId: "785126543620",
+    appId: "1:785126543620:web:7b358f80b32abaa1058051"
 };
 
 const app = firebase.initializeApp(firebaseConfig);

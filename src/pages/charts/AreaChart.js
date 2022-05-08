@@ -46,7 +46,7 @@ const LegendItem = props => (
     <Legend.Item {...props} sx={{flexDirection: 'column'}}/>
 );
 
-export default class Demo extends React.PureComponent {
+export default class DemoArea extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -57,12 +57,12 @@ export default class Demo extends React.PureComponent {
 
     render() {
         const {data: chartData} = this.state;
-        const paperStyle = {padding: 10, margin: "20px auto", align: "right"}
+        const paperStyle = {padding: 30, margin: "20px auto", align: "right"}
 
         return (
             <Grid container spacing={gridSpacing}>
-                <Grid item xs={12} sm={6}>
-                    <Paper elevation={20} style={paperStyle}>
+                <Grid item xs={12}>
+                    <Paper elevation={2} style={paperStyle}>
                         <Chart
                             data={chartData}
                             rootComponent={ChartRoot}

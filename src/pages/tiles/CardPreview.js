@@ -30,7 +30,7 @@ export default function CardPreview(props) {
                         <MoreVertIcon />
                     </IconButton>
                 }
-                title="Lorem Ipsum"
+                title="My Newsstand"
                 subheader={
                     new Date(+new Date() - Math.floor(Math.random() * 10000000000))
                         .toISOString()
@@ -40,19 +40,17 @@ export default function CardPreview(props) {
             <CardMedia
                 className={classes.media}
                 image={props.url}
-                title="Lorem Ipsum"
+                title="My News"
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt
-                    lobortis feugiat vivamus at augue.
+                    <br />
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
+            {/*    <IconButton aria-label="add to favorites">*/}
+            {/*        <FavoriteIcon />*/}
+            {/*    </IconButton>*/}
                 <IconButton aria-label="share">
                     <ShareIcon />
                 </IconButton>
