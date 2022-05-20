@@ -1,9 +1,30 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./QuizTest.css";
 import NavigationBar from "../../navBar/NavigationBar";
+import { auth, db } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useHistory } from "react-router-dom";
 
 function Network() {
     const intervalRef = useRef(null);
+
+    const [user, loading, error] = useAuthState(auth);
+    const [firstName, setFirstName] = useState("");
+    const history = useHistory();
+
+    const fetchUserName = async () => {
+        try {
+            const query = await db
+                .collection("users")
+                .where("uid", "==", user?.uid)
+                .get();
+            const data = await query.docs[0].data();
+            setFirstName(data.firstName);
+        } catch (err) {
+            console.error(err);
+            alert("An error occured while fetching user data");
+        }
+    };
 
     const [timer, setTimer] = useState("00:00:00");
 
@@ -127,6 +148,10 @@ function Network() {
             setCurrentQuestion(nextQuetions);
         } else {
             setShowScore(true);
+            db.collection("users").doc(user?.uid).collection("networkQuiz").add({
+                networkScore: score,
+                createdAt: new Date().toDateString(),
+            });
         }
     };
 

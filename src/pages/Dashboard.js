@@ -14,6 +14,11 @@ import useStyles from "../styles";
 import MyCharts from "./tiles/MyCharts";
 import SecondFeatured from "./tiles/SecondFeatured";
 import ThirdFeatured1 from "./tiles/ThirdFeatured";
+import AppDrawer from "../Menu/AppDrawer";
+import Header from "../Components/Header/Header";
+import NavBar from "../Components/NavBar";
+import AppBar from "../Menu/AppBar";
+
 
 
 function Dashboard() {
@@ -31,7 +36,7 @@ function Dashboard() {
                 .where("uid", "==", user?.uid)
                 .get();
             const data = await query.docs[0].data();
-            firstName(data.name);
+            setFirstName(data.firstName);
         } catch (err) {
             console.error(err);
             alert("An error occured while fetching user data");
@@ -50,7 +55,9 @@ function Dashboard() {
         <div className="App" style={{width: '100%', align: 'center', padding: '10px'}}>
             <CssBaseline/>
             {/*<React.Fragment>*/}
-            <NavigationBar/>
+            {/*<NavigationBar/>*/}
+            <NavBar/>
+            <Header/>
 
             <Container maxWidth="lg">
                 <main>
@@ -71,6 +78,8 @@ function Dashboard() {
                     <br/>
                     <SecondFeatured/>
                     <ThirdFeatured1/>
+                    <br/>
+                    <br/>
                 </main>
             </Container>
             <Footer/>

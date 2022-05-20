@@ -132,7 +132,7 @@ export default function ThirdFeatured() {
                 .where("uid", "==", user?.uid)
                 .get();
             const data = await query.docs[0].data();
-            firstName(data.name);
+            setFirstName(data.firstName);
         } catch (err) {
             console.error(err);
             alert("An error occured while fetching user data");

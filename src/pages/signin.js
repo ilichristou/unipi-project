@@ -150,7 +150,7 @@ import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { auth, signInWithEmailAndPassword } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-// import Typography from './modules/components/Typography';
+// import Typography from './modules/LeaderboardComponents/Typography';
 // import AppFooter from './modules/views/AppFooter';
 // import AppAppBar from './modules/views/AppAppBar';
 import "./signin1.css";

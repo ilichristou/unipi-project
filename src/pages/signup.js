@@ -205,7 +205,7 @@ import {
     registerWithEmailAndPassword
 } from '../firebase';
 import "./signup1.css";
-//import Typography from './modules/components/Typography';
+//import Typography from './modules/LeaderboardComponents/Typography';
 import footer from './footer';
 //import AppAppBar from './modules/views/AppAppBar';
 import withRoot from '../modules/withRoot';

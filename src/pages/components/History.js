@@ -1,9 +1,37 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./QuizTest.css";
 import NavigationBar from "../../navBar/NavigationBar";
+import { auth, db } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useHistory } from "react-router-dom";
 
 function History() {
     const intervalRef = useRef(null);
+
+    const [user, loading, error] = useAuthState(auth);
+    const [firstName, setFirstName] = useState("");
+    const history = useHistory();
+
+    const fetchUserName = async () => {
+        try {
+            const query = await db
+                .collection("users")
+                .where("uid", "==", user?.uid)
+                .get();
+            const data = await query.docs[0].data();
+            setFirstName(data.firstName);
+        } catch (err) {
+            console.error(err);
+            alert("An error occured while fetching user data");
+        }
+    };
+
+    useEffect(() => {
+        if (loading) return;
+        if (!user) return history.replace("/");
+
+        fetchUserName();
+    }, [user, loading]);
 
     const [timer, setTimer] = useState("00:00:00");
 
@@ -117,9 +145,11 @@ function History() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
+    const [points, setPoints] = useState(0);
     const handleAnswerButtonClick = (isCorrect) => {
         if (isCorrect === true) {
             setScore(score + 1);
+            setPoints(points + 5)
         }
 
         const nextQuetions = currentQuestion + 1;
@@ -127,6 +157,11 @@ function History() {
             setCurrentQuestion(nextQuetions);
         } else {
             setShowScore(true);
+            db.collection("users").doc(user?.uid).collection("historyQuiz").add({
+                historyScore: score,
+                historyPoints: points,
+                createdAt: new Date().toDateString(),
+            });
         }
     };
 

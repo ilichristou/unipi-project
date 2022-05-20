@@ -63,19 +63,19 @@ export default function NavBar() {
                     ACQUATTICA.COM
                 </Typography>
                 <NavMenu>
-                    <NavLink to='/home' activeStyle>
+                    <NavLink to='/Dashboard' activeStyle>
                         HOME
                     </NavLink>
                     <NavLink to='/consumption' activeStyle>
                         CONSUMPTION
                     </NavLink>
-                    <NavLink to='/newsstand' activeStyle>
-                        NEWSSTAND
-                    </NavLink>
+                    {/*<NavLink to='/newsstand' activeStyle>*/}
+                    {/*    NEWSSTAND*/}
+                    {/*</NavLink>*/}
                     {/*<NavLink to='/games' activeStyle>*/}
                     {/*    Τα παιχνίδια μου*/}
                     {/*</NavLink>*/}
-                    <NavLink to='/quiz' activeStyle>
+                    <NavLink to='/joinQuiz' activeStyle>
                         QUIZ
                     </NavLink>
                     <NavLink to='/leaderboard' activeStyle>

@@ -1,10 +1,12 @@
 // import {initializeApp} from "firebase/app";
 // import {getAuth} from "firebase/auth";
 // import {getFirestore, collection, getDocs, addDoc} from "firebase/firestore";
+import {initializeApp} from "firebase/app";
+// import {getFirestore} from 'firebase/firestore';
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-import {collection} from "firebase/firestore";
+// import {collection} from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -21,6 +23,8 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = app.auth();
 const db = app.firestore();
 
+// export const db = getFirestore(app)
+
 // init firebase app
 //initializeApp(firebaseConfig);
 
@@ -31,7 +35,7 @@ const db = app.firestore();
 //const db = getFirestore();
 
 // collection ref
-//const colRef = collection(db, 'posts');
+// const scoreCollectionRef = collection(db, 'score');
 
 // get collection data
 // getDocs(colRef).then((snapshot) => {

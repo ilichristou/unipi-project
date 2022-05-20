@@ -271,149 +271,197 @@
 // export default faq;
 
 
-//----------------2---------------------------------------
+import * as React from 'react';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import NavigationBar from '../navBar/NavigationBar'
+import Grid from "@material-ui/core/Grid";
+import {makeStyles} from "@material-ui/core/styles";
+import useStyles from "../styles";
+import Container from "@material-ui/core/Container";
+import Paper from "@mui/material/Paper";
 
-import React, {useState, useRef, useEffect} from "react";
-import "./faq.css";
-import {FiPlus} from "react-icons/fi";
 
-export default function App() {
-    const [active, setActive] = useState(false);
+export default function SimpleAccordion() {
+    const classes = useStyles();
 
-    const contentRef = useRef(null);
-
-    useEffect(() => {
-        contentRef.current.style.maxHeight = active
-            ? `${contentRef.current.scrollHeight}px`
-            : "0px";
-    }, [contentRef, active]);
-
-    const toggleAccordion = () => {
-        setActive(!active);
-    };
     return (
-        <>
-            <div className="App">
-                <div>
-                    <button
-                        className={`question-section ${active}`}
-                        onClick={toggleAccordion}
-                    >
-                        <div>
-                            <div className="question-align">
-                                <h4 className="question-style">
-                                    1. What should I do so that the bill comes in my name?
-                                </h4>
-                                <FiPlus
-                                    className={active ? `question-icon rotate` : `question-icon`}
-                                />
-                            </div>
-                            <div
-                                ref={contentRef}
-                                className={active ? `answer answer-divider` : `answer`}
-                            >
-                                <p>You have 3 options:
-                                    <br/>
-                                    1. You can correct your details in the "Data Correction" section
-                                    <br/>
-                                    2. Contact the KEP with the receipt of the water intake bill
-                                    <br/>
-                                    3. Contact the Regional Centers of Acquattica
-                                    <br/>
-                                    After the data cross-checking by our Services, the following bills will
-                                    be now issued in your name and also will include your VAT number.</p>
-                            </div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            <div className="App">
-                <div>
-                    <button
-                        className={`question-section ${active}`}
-                        onClick={toggleAccordion}
-                    >
-                        <div>
-                            <div className="question-align">
-                                <h4 className="question-style">
-                                    1. What should I do so that the bill comes in my name?
-                                </h4>
-                                <FiPlus
-                                    className={active ? `question-icon rotate` : `question-icon`}
-                                />
-                            </div>
-                            <div
-                                ref={contentRef}
-                                className={active ? `answer answer-divider` : `answer`}
-                            >
-                                <p>You have 3 options:
-                                    <br/>
-                                    1. You can correct your details in the "Data Correction" section
-                                    <br/>
-                                    2. Contact the KEP with the receipt of the water intake bill
-                                    <br/>
-                                    3. Contact the Regional Centers of Acquattica
-                                    <br/>
-                                    After the data cross-checking by our Services, the following bills will
-                                    be now issued in your name and also will include your VAT number.</p>
-                            </div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </>
+        <div>
+            <NavigationBar/>
+            <Container maxWidth="lg">
+                <main>
+                    <Grid container spacing={2} maxWidth="70%">
+                        <Grid item xs={12}>
+                            <Paper className={classes.paper}>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <Typography>What should I do so that the bill comes in my name?</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            You have 3 options:
+                                            <br/>
+                                            1. You can correct your details in the "Data Correction" section
+                                            <br/>
+                                            2. Contact the KEP with the receipt of the water intake bill
+                                            <br/>
+                                            3. Contact the Regional Centers of Acquattica
+                                            <br/>
+                                            After the data cross-checking by our Services, the following bills will
+                                            be now issued in your name and also will include your VAT number.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography>Accordion 2</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography>Accordion 3</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography>Accordion 4</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography>Accordion 5</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography>Accordion 6</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography>Accordion 7</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography>Accordion 8</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography>Accordion 9</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography>Accordion 10</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                </main>
+            </Container>
+        </div>
     );
 }
 
-//------------------------------3------------------------------------------
 
-// import logo from './assets/peter-aiello-logo.svg';
-// import AccordionWrapper from '../faq/AccordionWrapper';
-// import AccordionItem from '../faq/AccordionItem';
-// import './faq.css';
-// //import './App.css';
-//
-// function faq() {
-//
-//     const data = [
-//         {
-//             "title": "Item 1",
-//             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a consequat nibh. Mauris suscipit arcu at fermentum convallis. Pellentesque consectetur mi in felis maximus posuere."
-//         },
-//         {
-//             "title": "Item 2",
-//             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie tellus a maximus tempus. Duis vel leo iaculis, porttitor erat et, posuere erat. Ut blandit."
-//         },
-//         {
-//             "title": "Item 3",
-//             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia, nibh imperdiet tempus pharetra, arcu risus aliquet arcu, a auctor ex lacus efficitur purus. Morbi."
-//         },
-//         {
-//             "title": "Item 4",
-//             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat lobortis nibh, eu molestie est placerat non. Donec ornare nisl erat, non imperdiet elit porta."
-//         }
-//     ];
-//
-//     return (
-//         <div className="App">
-//             <div className="content">
-//                 <div className="app-description">
-//                     <a href="https://peteraiello.dev" rel="noreferrer" target="_blank"><img src={logo} className="peter-aiello-logo" alt="peter-aiello-logo" /></a>
-//                     <h1>Custom React Accordion</h1>
-//                     <p>Choose the section using the Tab key. Press Enter to open. Shift + Tab to go to select the previous section.</p>
-//                 </div>
-//                 <AccordionWrapper>
-//                     {data.map((item, index) => (
-//                         <AccordionItem key={index} index={index} title={item.title} description={item.description} />
-//                     ))}
-//                 </AccordionWrapper>
-//             </div>
-//             <footer className="footer">
-//                 <p>Code on <a href="https://github.com/peteraiello/custom-react-accordion" rel="noreferrer" target="_blank">GitHub</a></p>
-//             </footer>
-//         </div>
-//     );
-// }
-//
-// export default faq;
 

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Signin from "./pages/signin";
 import Consumption from "./pages/consumption";
 import Leaderboard from "./pages/leaderboard";
-import FAQ from "./pages/faq";
+import Faq from "./pages/faq";
 import Newsstand from "./pages/newsstand";
 import Signup from "./pages/signup";
 import footer from "./footer";
@@ -53,14 +53,14 @@ function App() {
           {" "}
           <br /> <br /> <Quiz />{" "}
         </Route> */}
-                <Route path="/games/leaderboard" exact component={Leaderboard}>
+                <Route path="/leaderboard" exact component={Leaderboard}>
                     {" "}
                     <br /> <br /> <Leaderboard />{" "}
                 </Route>
-                <Route path="/faq" exact component={FAQ}>
+                <Route path="/faq" exact component={Faq}>
                     {" "}
                     <br /> <br />
-                    <FAQ />{" "}
+                    <Faq />{" "}
                 </Route>
                 <Route path="/signin" exact component={Signin}>
                     {" "}

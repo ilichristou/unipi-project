@@ -36,7 +36,7 @@ function Start() {
                 .where("uid", "==", user?.uid)
                 .get();
             const data = await query.docs[0].data();
-            firstName(data.name);
+            setFirstName(data.firstName);
         } catch (err) {
             console.error(err);
             alert("An error occured while fetching user data");
@@ -57,7 +57,7 @@ function Start() {
                 // height: '800px',
 
                 height: '100vh',
-                backgroundImage: `url("https://images.unsplash.com/photo-1615529328331-f8917597711f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")`,
+                backgroundImage: `url("https://images.unsplash.com/photo-1504541891213-1b1dfdadb739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
 

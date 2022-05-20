@@ -15,6 +15,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import {Menu} from "@material-ui/core";
+import {NavBtn, NavBtnLink, NavLink, NavMenu} from "../navBar/NavBarElements";
+import {logout} from "../firebase";
 
 const drawerWidth = 240;
 
@@ -30,27 +33,32 @@ function ResponsiveDrawer(props) {
         <div>
             <Toolbar />
             <Divider />
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
+            <NavMenu>
+                <NavLink to='/Dashboard' activeStyle>
+                    HOME
+                </NavLink> <br/>
+                <NavLink to='/consumption' activeStyle>
+                    CONSUMPTION
+                </NavLink> <br/>
+                {/*<NavLink to='/newsstand' activeStyle>*/}
+                {/*    NEWSSTAND*/}
+                {/*</NavLink>*/}
+                {/*<NavLink to='/games' activeStyle>*/}
+                {/*    Τα παιχνίδια μου*/}
+                {/*</NavLink>*/}
+                <NavLink to='/joinQuiz' activeStyle>
+                    QUIZ
+                </NavLink> <br/>
+                <NavLink to='/leaderboard' activeStyle>
+                    LEADERBOARD
+                </NavLink> <br/>
+                {/*<MenuItem onClick={logout} href="/">*/}
+                {/*    Log out*/}
+                {/*</MenuItem>*/}
+                <NavBtn>
+                    <NavBtnLink onClick={logout} to="/">SIGN OUT</NavBtnLink>
+                </NavBtn>
+            </NavMenu>
         </div>
     );
 
@@ -77,7 +85,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                        ACQUATTICA
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -118,34 +126,9 @@ function ResponsiveDrawer(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
-                <Typography paragraph>
-                    Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-                    eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-                    neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-                    tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-                    sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-                    tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-                    gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-                    et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-                    tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-                    eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-                    posuere sollicitudin aliquam ultrices sagittis orci a.
-                </Typography>
+
             </Box>
+
         </Box>
     );
 }
@@ -159,3 +142,61 @@ ResponsiveDrawer.propTypes = {
 };
 
 export default ResponsiveDrawer;
+
+// import React from "react";
+// import {
+//     Drawer as MUIDrawer,
+//     ListItem,
+//     List,
+//     ListItemIcon,
+//     ListItemText
+// } from "@material-ui/core";
+// import { makeStyles } from "@material-ui/core/styles";
+// import InboxIcon from "@material-ui/icons/MoveToInbox";
+// import MailIcon from "@material-ui/icons/Mail";
+// import { withRouter } from "react-router-dom";
+//
+// const useStyles = makeStyles({
+//     drawer: {
+//         width: "500px"
+//     }
+// });
+//
+// const Drawer = props => {
+//     const { history } = props;
+//     const classes = useStyles();
+//     const itemsList = [
+//         {
+//             text: "Home",
+//             icon: <InboxIcon />,
+//             onClick: () => history.push("/")
+//         },
+//         {
+//             text: "About",
+//             icon: <MailIcon />,
+//             onClick: () => history.push("/faq")
+//         },
+//         {
+//             text: "Contact",
+//             icon: <MailIcon />,
+//             onClick: () => history.push("/consumption")
+//         }
+//     ];
+//     return (
+//         <MUIDrawer variant="permanent" className={classes.drawer}>
+//             <List>
+//                 {itemsList.map((item, index) => {
+//                     const { text, icon, onClick } = item;
+//                     return (
+//                         <ListItem button key={text} onClick={onClick}>
+//                             {icon && <ListItemIcon>{icon}</ListItemIcon>}
+//                             <ListItemText primary={text} />
+//                         </ListItem>
+//                     );
+//                 })}
+//             </List>
+//         </MUIDrawer>
+//     );
+// };
+//
+// export default withRouter(Drawer);
